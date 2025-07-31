@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Necha vaqt qoldi?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #1a1a1a;
+      color: #ffffff;
+      padding: 30px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .light-mode {
+      background: #f5f5f5;
+      color: #000000;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background-color: #00aaff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #008ecc;
+    }
+    #natija {
+      font-size: 28px;
+      margin-top: 30px;
+      letter-spacing: 2px;
+    }
+    .chayqal {
+      animation: chayqalish 0.4s ease-in-out 2;
+    }
+    @keyframes chayqalish {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+    @media (max-width: 600px) {
+      #natija {
+        font-size: 22px;
+      }
+      input, button {
+        width: 90%;
+      }
+    }
+
+    /* MODAL STYLES */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .modal-content {
+      background: #222;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      position: relative;
+      box-sizing: border-box;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-content h2 {
+      margin-top: 0;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .social-buttons {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .social-buttons button {
+      background-color: #333;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .social-buttons button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Necha vaqt qoldi?</h1>
+
+  <!-- Rejim -->
+  <div style="margin-bottom: 10px;">
+    <label>
+      <input type="checkbox" onchange="toggleTheme()"> 🌗 Tungi / Kungi rejim
+    </label>
+  </div>
+
+  <p>Sanani tanlang:</p>
+  <input type="date" id="targetDate">
+  <button onclick="startTimer()">Hisoblash</button>
+
+  <div id="natija">Sana tanlanmagan</div>
+
+  <div style="margin-top: 20px;">
+    <button onclick="openModal()">👤 Yaratuvchi haqida</button>
+  </div>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <h2>👤 Yaratuvchi haqida</h2>
+      <p style="text-align: left;">
+        ╔═══════ஜ۩۞۩ஜ═══════╗<br><br>
+        MENI QIDIRISHING SHART EMAS, <br>
+        MANA LINKLARIM:<br><br>
+        🌐 Instagram: @reyzer2112<br>
+        🔗 https://www.instagram.com/reyzer2112<br><br>
+        🌐 YouTube: @ReyZer-2112<br>
+        🔗 https://www.youtube.com/@ReyZer-2112<br><br>
+        🌐 Telegram: @ReyZer2112<br><br>
+        🙋🏻 Snapchat: reyzer2112<br>
+        🔗 https://www.snapchat.com/add/reyzer2112?share_id=Ha5ktm0sdkc&locale=ru-RU<br><br>
+        🎮 Roblox: Zoh_1rshox020315<br>
+        🔗 https://www.roblox.com/users/4669071068/profile<br><br>
+        🌐 Discord: reyzer2112<br>
+        🔗 http://discord.gg/reyzer2112<br><br>
+        ╚═══════ஜ۩۞۩ஜ═══════╝
+      </p>
+
+      <div class="social-buttons">
+        <button onclick="window.open('https://www.instagram.com/reyzer2112')">📷 Instagram</button>
+        <button onclick="window.open('https://www.youtube.com/@ReyZer-2112')">▶️ YouTube</button>
+        <button onclick="window.open('https://t.me/ReyZer2112')">✈️ Telegram</button>
+        <button onclick="window.open('https://www.snapchat.com/add/reyzer2112?share_id=Ha5ktm0sdkc&locale=ru-RU')">👻 Snapchat</button>
+        <button onclick="window.open('https://www.roblox.com/users/4669071068/profile')">🎮 Roblox</button>
+        <button onclick="window.open('http://discord.gg/reyzer2112')">💬 Discord</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ovoz -->
+  <audio id="errorSound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+
+  <script>
+    let interval;
+
+    function formatUzDate(date) {
+      let k = date.getDate().toString().padStart(2, '0');
+      let o = (date.getMonth() + 1).toString().padStart(2, '0');
+      let y = date.getFullYear();
+      return `${k}.${o}.${y}`;
+    }
+
+    function startTimer() {
+      clearInterval(interval);
+      const userInput = document.getElementById("targetDate").value;
+      const natija = document.getElementById("natija");
+      const audio = document.getElementById("errorSound");
+
+      if (!userInput) {
+        natija.innerHTML = '<span style="color: red; font-weight: bold;">⚠️ Iltimos, sana tanlang!</span>';
+        natija.classList.add("chayqal");
+        audio.play();
+        setTimeout(() => {
+          natija.classList.remove("chayqal");
+        }, 500);
+        return;
+      }
+
+      const targetDate = new Date(userInput);
+      targetDate.setHours(0, 0, 0, 0);
+
+      interval = setInterval(() => {
+        const now = new Date();
+        const difference = targetDate - now;
+
+        if (difference <= 0) {
+          clearInterval(interval);
+          natija.innerText = "⏰ Tugadi!";
+          natija.style.color = "#00ff00";
+          return;
+        }
+
+        const totalSeconds = Math.floor(difference / 1000);
+        const kun = Math.floor(totalSeconds / (3600 * 24));
+        const soat = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+        const minut = Math.floor((totalSeconds % 3600) / 60);
+        const sekund = totalSeconds % 60;
+
+        natija.innerHTML = `
+          <div>${formatUzDate(targetDate)} gacha qolgan vaqt:</div><br>
+          <span>${kun.toString().padStart(2, '0')} KUN</span> :
+          <span>${soat.toString().padStart(2, '0')} SOAT</span> :
+          <span>${minut.toString().padStart(2, '0')} MINUT</span> :
+          <span style="color: red;">${sekund.toString().padStart(2, '0')} SEKUND</span>
+        `;
+        natija.style.color = "";
+      }, 1000);
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+    }
+
+    function openModal() {
+      document.getElementById("myModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
